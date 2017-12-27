@@ -1,7 +1,7 @@
 {
   "name": "ChatterBox",
   "version": "1.0.0",
-  "description": "",
+  "description": "initial stab at writing a readme for the chatterbox",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
   "dependencies": {
     "apiai": "^4.0.3",
     "express": "^4.16.2",
-    "socket.io": "^2.0.3"
-  }
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {}
 }
