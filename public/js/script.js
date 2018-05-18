@@ -3,10 +3,8 @@
 const socket = io();
 const outputYou = document.querySelector('.output-you');
 const outputBot = document.querySelector('.output-bot');
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-
-
+var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+var recognition = new SpeechRecognition();
 
 
 recognition.lang = 'en-US';
@@ -27,22 +25,22 @@ recognition.onspeechend = function() {
 recognition.addEventListener('result', (e) => {
   let last = e.results.length - 1;
   let text = e.results[last][0].transcript;
-console.log(e);
-console.log(last);
-console.log(text);
-outputYou.textContent = text;
+  console.log(e);
+  console.log(last);
+  console.log(text);
+  outputYou.textContent = text;
   console.log('Confidence: ' + e.results[0][0].confidence);
 
   // We will use the Socket.IO here later…
 
   var open = text.substring(0, 5);
   var target = text.substring(5);
+  console.log("open: " + open);
+  console.log("target: " + target);
   if(open === 'open '){
     var url = 'http://www.' + target;
     window.open(url, '', 'width=1000');
   }
- 
-
 
   socket.emit('chat message', text);
 });
